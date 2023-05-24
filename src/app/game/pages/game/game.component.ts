@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import { getRandomItem } from 'src/app/helpers/random.helper';
 import { Pokemon } from '../../interfaces/pokemon.interface';
 import { PlayerService } from '../../services/player.service';
@@ -13,14 +13,21 @@ export class GameComponent implements OnInit {
 
   loaded: boolean = false;
   private _selected: boolean = false;
-  private _pokemonSelected: string = '';
+  private _pokemonSelected: string = "";
   private _pokemons: Pokemon[] = [];
   private _pokemon!: Pokemon;
+  pokemonFinal = this.pokemonSelected;
+  _temp: boolean | undefined = false;
+
+  get temp(): boolean {
+    this._temp = true;
+    return this._temp;
+  }
 
   get score(): number {
     return this.playerService.score;
   }
-  
+
   get hearts(): Array<any> {
     return Array(this.playerService.lifes);
   }
@@ -68,7 +75,7 @@ export class GameComponent implements OnInit {
       this.playerService.decreaseLifes();
       console.log('incorrect');
     }
-    
+
   }
 
   // this function es execute every time that user click in next game

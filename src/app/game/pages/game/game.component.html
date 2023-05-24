@@ -14,7 +14,7 @@
         <div>
             <h2>Who is that Pokemon?...</h2>
         </div>
-    
+
         <div>
             <app-pokemon-view [url]="urlImage"
                               [show]="selected"
@@ -27,25 +27,27 @@
         <div>
             <ul>
                 <li *ngFor="let pokemon of pokemonList">
+                  <div id="pokemonChoice">
                     <button class="btn"
                             mat-ripple
-                            (click)="onSelect(pokemon.name)"
+                            (click)="onSelect(pokemon.name) "
                             [disabled]="selected"
                             [class.success]="pokemon.name === pokemonName"
                             [class.mistake]="pokemon.name === pokemonSelected && pokemon.name !== pokemonName">
                         {{ pokemon.name }}
                     </button>
+                  </div>
                 </li>
             </ul>
         </div>
-    
+
         <!-- <div>
             <h3>Points: {{ points }}</h3>
         </div>
         <div>
             <img *ngFor="let heart of hearts" class="heart" src="assets/heart.png">
         </div> -->
-    
+
         <div *ngIf="selected">
             <button mat-raised-button
                     color="primary"
@@ -54,8 +56,13 @@
             </button>
         </div>
     </div>
-    
+
 </ng-container>
+
+
+<div *ngIf="temp == true">
+  <app-habilitats-isma-naciri [pokemon_name]="pokemonFinal"></app-habilitats-isma-naciri>
+</div>
 
 <ng-template #Loading>
     <div class="spinner">

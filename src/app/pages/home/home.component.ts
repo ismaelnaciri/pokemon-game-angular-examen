@@ -9,6 +9,17 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  textReceived: any;
+
+  test() {
+    //@ts-ignore
+    this.textReceived = (<HTMLInputElement> document.getElementById("inputText")).value
+    console.log(typeof this.textReceived)
+    console.log(this.textReceived)
+  }
+
+
+
   ngOnInit(): void {
   }
 
